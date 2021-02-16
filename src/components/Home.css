@@ -1,0 +1,10 @@
+.nav-link {
+  color: black;
+  font-weight: bold;
+  background-color: coral;
+  cursor: pointer;
+}
+
+.nav-link.active {
+  color: white;
+}
