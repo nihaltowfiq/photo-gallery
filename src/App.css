@@ -13,3 +13,8 @@
 .active {
   color: coral;
 }
+
+.bg-blur {
+  color: white;
+  background: #6b707483;
+}
