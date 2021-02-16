@@ -1,8 +1,16 @@
+import { Container } from "react-bootstrap";
+import { BrowserRouter as Router } from "react-router-dom";
+import Header from "./components/Header";
+import Home from "./components/Home";
+
 function App() {
   return (
-    <div>
-      <h1>Nihal</h1>
-    </div>
+    <Router>
+      <Header />
+      <Container>
+        <Home />
+      </Container>
+    </Router>
   );
 }
 
