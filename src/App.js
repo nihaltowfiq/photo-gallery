@@ -1,5 +1,9 @@
 function App() {
-    return <div />;
+  return (
+    <div>
+      <h1>Nihal</h1>
+    </div>
+  );
 }
 
 export default App;
