@@ -1,5 +1,6 @@
 import { Container } from "react-bootstrap";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "./App.css";
 import Header from "./components/Header";
 import Home from "./components/Home";
 
@@ -8,7 +9,9 @@ function App() {
     <Router>
       <Header />
       <Container>
-        <Home />
+        <Switch>
+          <Route exact path="/" component={Home} />
+        </Switch>
       </Container>
     </Router>
   );

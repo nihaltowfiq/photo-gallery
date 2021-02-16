@@ -1,0 +1,11 @@
+.nav_link {
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+  margin: 10px;
+}
+
+.nav_link:hover {
+  color: coral;
+  text-decoration: none;
+}
