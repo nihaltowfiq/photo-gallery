@@ -3,6 +3,10 @@
   font-weight: bold;
   background-color: coral;
   cursor: pointer;
+  border-radius: 5px;
+}
+.nav-link:hover {
+  background-color: #fa6a35;
 }
 
 .nav-link.active {

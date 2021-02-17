@@ -1,11 +1,11 @@
-.nav_link {
+.header_nav_link {
   font-size: 18px;
   font-weight: bold;
   color: black;
   margin: 10px;
 }
 
-.nav_link:hover {
+.header_nav_link:hover {
   color: coral;
   text-decoration: none;
 }
@@ -14,7 +14,11 @@
   color: coral;
 }
 
-.bg-blur {
+.bg_cloudy {
   color: white;
   background: #6b707483;
+}
+
+.btn_light:hover {
+  color: coral !important;
 }

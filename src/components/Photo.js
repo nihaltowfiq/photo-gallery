@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Card, Col } from "react-bootstrap";
+import { Button, Card, Col } from "react-bootstrap";
 
 const Photo = ({ photo }) => {
   const [show, setShow] = useState(false);
@@ -13,8 +13,13 @@ const Photo = ({ photo }) => {
       >
         <Card.Img src={photo.photo} />
         {show && (
-          <Card.ImgOverlay className="d-flex align-content-center flex-wrap justify-content-center bg-blur">
-            <Card.Title as="h1">{photo.title}</Card.Title>
+          <Card.ImgOverlay className="text-center align-content-bottom bg_cloudy">
+            <Card.Title className="mt-5" as="h1">
+              {photo.title}
+            </Card.Title>
+            <Button className="btn_light font-weight-bold" variant="light">
+              View Details
+            </Button>
           </Card.ImgOverlay>
         )}
       </Card>
