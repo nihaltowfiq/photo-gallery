@@ -31,9 +31,7 @@ const PhotoDetails = (props) => {
           <Row>
             <Col md={7}>
               <img
-                // style={{ maxWidth: "600px" }}
                 className="img-fluid rounded"
-                // className="img-fluid rounded position-fixed"
                 src={props.photo.photo}
                 alt={props.photo.title}
               />
@@ -54,7 +52,6 @@ const PhotoDetails = (props) => {
       </Modal.Body>
 
       <Modal.Footer>
-        {/* <Button onClick={props.onHide}>Close</Button> */}
         <Form className="mr-3">
           <InputGroup>
             <FormControl
