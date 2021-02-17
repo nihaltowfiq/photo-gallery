@@ -4,12 +4,14 @@ import { Row } from "react-bootstrap";
 import { photos } from "../data/photos";
 import Photo from "./Photo";
 import "./Home.css";
+import PhotoDetails from "./PhotoDetails";
 
 const datas = photos;
 
 const Home = () => {
   const [photos] = useState(datas);
   const [selectedCategory, setSelectedCategory] = useState("flower");
+  const [showModal, setShowModal] = useState(false);
 
   const selectedPhotos = photos.filter(
     (photo) => photo.category === selectedCategory
@@ -43,9 +45,14 @@ const Home = () => {
       </nav>
       <Row>
         {selectedPhotos.map((photo) => (
-          <Photo key={photo.id} photo={photo} />
+          <Photo
+            key={photo.id}
+            photo={photo}
+            modalShow={() => setShowModal(true)}
+          />
         ))}
       </Row>
+      <PhotoDetails show={showModal} onHide={() => setShowModal(false)} />
     </div>
   );
 };
