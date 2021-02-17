@@ -2,8 +2,13 @@ import React from "react";
 import { useState } from "react";
 import { Button, Card, Col } from "react-bootstrap";
 
-const Photo = ({ photo, modalShow }) => {
+const Photo = ({ photo, modalShow, handleSelectedPhoto }) => {
   const [showOption, setShowOption] = useState(false);
+
+  const viewDetailsEvent = () => {
+    modalShow();
+    handleSelectedPhoto();
+  };
 
   return (
     <Col md={4} className="p-2 align-content-center">
@@ -19,7 +24,7 @@ const Photo = ({ photo, modalShow }) => {
               {photo.title}
             </Card.Title>
             <Button
-              onClick={modalShow}
+              onClick={viewDetailsEvent}
               className="btn_light font-weight-bold"
               variant="light"
             >

@@ -1,21 +1,26 @@
 import React from "react";
 import { useState } from "react";
 import { Row } from "react-bootstrap";
-import { photos } from "../data/photos";
+import { PHOTOS } from "../data/photos";
 import Photo from "./Photo";
 import "./Home.css";
 import PhotoDetails from "./PhotoDetails";
 
-const datas = photos;
+// const photos = PHOTOS;
 
 const Home = () => {
-  const [photos] = useState(datas);
+  const [photos] = useState(PHOTOS);
   const [selectedCategory, setSelectedCategory] = useState("flower");
   const [showModal, setShowModal] = useState(false);
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
 
   const selectedPhotos = photos.filter(
     (photo) => photo.category === selectedCategory
   );
+
+  const handleSelectedPhoto = (photo) => {
+    setSelectedPhoto(photo);
+  };
   console.log(selectedPhotos);
   return (
     <div>
@@ -49,10 +54,17 @@ const Home = () => {
             key={photo.id}
             photo={photo}
             modalShow={() => setShowModal(true)}
+            handleSelectedPhoto={() => handleSelectedPhoto(photo)}
           />
         ))}
       </Row>
-      <PhotoDetails show={showModal} onHide={() => setShowModal(false)} />
+      {selectedPhoto && (
+        <PhotoDetails
+          show={showModal}
+          onHide={() => setShowModal(false)}
+          photo={selectedPhoto}
+        />
+      )}
     </div>
   );
 };

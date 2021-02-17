@@ -11,9 +11,9 @@ import mango from "../assets/fruits/mango.jpg";
 import orange from "../assets/fruits/orange.jpg";
 import strawberry from "../assets/fruits/strawberry.jpg";
 
-export const photos = [
+export const PHOTOS = [
   {
-    id: 18,
+    id: 0,
     title: "Strawberry",
     photographer: "Dustin Bowers",
     photo: strawberry,
@@ -22,7 +22,7 @@ export const photos = [
     category: "fruits",
   },
   {
-    id: 6,
+    id: 1,
     title: "Banana",
     photographer: "Brandon Chambers",
     photo: banana,
@@ -31,7 +31,7 @@ export const photos = [
     category: "fruits",
   },
   {
-    id: 56,
+    id: 2,
     title: "Apple",
     photographer: "Philip Jefferson",
     photo: apple,
@@ -40,7 +40,7 @@ export const photos = [
     category: "fruits",
   },
   {
-    id: 41,
+    id: 3,
     title: "Guava",
     photographer: "Fannie Murphy",
     photo: guava,
@@ -49,7 +49,7 @@ export const photos = [
     category: "fruits",
   },
   {
-    id: 9,
+    id: 4,
     title: "Mango",
     photographer: "Laura Lambert",
     photo: mango,
@@ -58,7 +58,7 @@ export const photos = [
     category: "fruits",
   },
   {
-    id: 60,
+    id: 5,
     title: "Orange",
     photographer: "Adeline Wilkerson",
     photo: orange,
@@ -67,7 +67,7 @@ export const photos = [
     category: "fruits",
   },
   {
-    id: 35,
+    id: 6,
     title: "Daffodil",
     photographer: "Dustin Bowers",
     photo: daffodil,
@@ -76,7 +76,7 @@ export const photos = [
     category: "flower",
   },
   {
-    id: 51,
+    id: 7,
     title: "Daisy",
     photographer: "Brandon Chambers",
     photo: daisy,
@@ -85,7 +85,7 @@ export const photos = [
     category: "flower",
   },
   {
-    id: 36,
+    id: 8,
     title: "Orchid",
     photographer: "Philip Jefferson",
     photo: orchid,
@@ -94,7 +94,7 @@ export const photos = [
     category: "flower",
   },
   {
-    id: 25,
+    id: 9,
     title: "Rose",
     photographer: "Fannie Murphy",
     photo: rose,
@@ -103,7 +103,7 @@ export const photos = [
     category: "flower",
   },
   {
-    id: 7,
+    id: 10,
     title: "Sunflower",
     photographer: "Laura Lambert",
     photo: sunflower,
@@ -112,7 +112,7 @@ export const photos = [
     category: "flower",
   },
   {
-    id: 72,
+    id: 11,
     title: "Tulip",
     photographer: "Adeline Wilkerson",
     photo: tulip,
