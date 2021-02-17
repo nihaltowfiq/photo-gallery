@@ -69,7 +69,7 @@ const Home = () => {
           show={showModal}
           onHide={() => setShowModal(false)}
           photo={selectedPhoto}
-          commentsOfSelectedPhoto={commentsOfSelectedPhoto}
+          comments={commentsOfSelectedPhoto}
         />
       )}
     </div>

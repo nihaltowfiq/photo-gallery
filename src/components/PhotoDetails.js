@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
   Button,
   Col,
@@ -12,6 +12,12 @@ import {
 import LoadComments from "./LoadComments";
 
 const PhotoDetails = (props) => {
+  const commentInput = useRef();
+
+  const handleCommentSubmit = (e) => {
+    console.log(commentInput.current.value);
+    e.preventDefault();
+  };
   return (
     <Modal
       {...props}
@@ -43,22 +49,21 @@ const PhotoDetails = (props) => {
               </h5>
               <p className="text-justify">{props.photo.description}</p>
               <hr />
-              <LoadComments
-                commentsOfSelectedPhoto={props.commentsOfSelectedPhoto}
-              />
+              <LoadComments comments={props.comments} />
             </Col>
           </Row>
         </Container>
       </Modal.Body>
 
       <Modal.Footer>
-        <Form className="mr-3">
+        <Form onSubmit={handleCommentSubmit} className="mr-3">
           <InputGroup>
             <FormControl
               type="text"
               style={{ width: "350px" }}
               placeholder="Your Comment"
               required
+              ref={commentInput}
             />
 
             <InputGroup.Append>
