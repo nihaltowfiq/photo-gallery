@@ -1,5 +1,14 @@
 import React from "react";
-import { Button, Col, Container, Modal, Row } from "react-bootstrap";
+import {
+  Button,
+  Col,
+  Container,
+  Form,
+  FormControl,
+  InputGroup,
+  Modal,
+  Row,
+} from "react-bootstrap";
 import LoadComments from "./LoadComments";
 
 const PhotoDetails = (props) => {
@@ -23,10 +32,10 @@ const PhotoDetails = (props) => {
             <Col md={7}>
               <img
                 // style={{ maxWidth: "600px" }}
-                className="img-fluid"
-                // className="img-fluid position-fixed"
+                className="img-fluid rounded"
+                // className="img-fluid rounded position-fixed"
                 src={props.photo.photo}
-                alt=""
+                alt={props.photo.title}
               />
             </Col>
             <Col md={5}>
@@ -35,15 +44,34 @@ const PhotoDetails = (props) => {
                 {props.photo.photographer}
               </h5>
               <p className="text-justify">{props.photo.description}</p>
-              <LoadComments />
+              <hr />
+              <LoadComments
+                commentsOfSelectedPhoto={props.commentsOfSelectedPhoto}
+              />
             </Col>
           </Row>
         </Container>
       </Modal.Body>
 
-      {/* <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
-      </Modal.Footer> */}
+      <Modal.Footer>
+        {/* <Button onClick={props.onHide}>Close</Button> */}
+        <Form className="mr-3">
+          <InputGroup>
+            <FormControl
+              type="text"
+              style={{ width: "350px" }}
+              placeholder="Your Comment"
+              required
+            />
+
+            <InputGroup.Append>
+              <Button type="submit" variant="outline-success">
+                Comment
+              </Button>
+            </InputGroup.Append>
+          </InputGroup>
+        </Form>
+      </Modal.Footer>
     </Modal>
   );
 };
