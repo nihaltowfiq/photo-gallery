@@ -17,7 +17,7 @@ export const PHOTOS = [
         id: 0,
         title: 'Strawberry',
         photographer: 'Dustin Bowers',
-        photo: strawberry,
+        img: strawberry,
         description:
             'any prepare sum popular personal pleasure least certainly protection anyone government weigh toy evidence fish disappear slave signal energy stage willing forth mood famous',
         category: 'fruits',
@@ -26,7 +26,7 @@ export const PHOTOS = [
         id: 1,
         title: 'Banana',
         photographer: 'Brandon Chambers',
-        photo: banana,
+        img: banana,
         description:
             'parallel rain busy desert learn cheese rice become drop he refer community hat wood noise sentence broad herself floor blind bill quickly purple old',
         category: 'fruits',
@@ -35,7 +35,7 @@ export const PHOTOS = [
         id: 2,
         title: 'Apple',
         photographer: 'Philip Jefferson',
-        photo: apple,
+        img: apple,
         description:
             'taste upon creature already mail fort outer highest noon steam tune join community fifteen settlers party widely talk volume sometime direction rabbit greatly occur',
         category: 'fruits',
@@ -44,7 +44,7 @@ export const PHOTOS = [
         id: 3,
         title: 'Guava',
         photographer: 'Fannie Murphy',
-        photo: guava,
+        img: guava,
         description:
             'knife strong cutting age gentle prevent forget belt job halfway whistle tent bit strange hidden observe gone clean atomic social molecular comfortable water shape',
         category: 'fruits',
@@ -53,7 +53,7 @@ export const PHOTOS = [
         id: 4,
         title: 'Mango',
         photographer: 'Laura Lambert',
-        photo: mango,
+        img: mango,
         description:
             'visitor mathematics cold accept molecular sitting fruits answer send enemy brass fat sleep cave somewhere people coming form nose sail largest wooden girl throw',
         category: 'fruits',
@@ -62,7 +62,7 @@ export const PHOTOS = [
         id: 5,
         title: 'Orange',
         photographer: 'Adeline Wilkerson',
-        photo: orange,
+        img: orange,
         description:
             'pond war tent depth partly highest mouse action expect one atmosphere electricity correct path them corn gravity track deer stick swing inside father writing',
         category: 'fruits',
@@ -71,7 +71,7 @@ export const PHOTOS = [
         id: 6,
         title: 'Daffodil',
         photographer: 'Dustin Bowers',
-        photo: daffodil,
+        img: daffodil,
         description:
             'any prepare sum popular personal pleasure least certainly protection anyone government weigh toy evidence fish disappear slave signal energy stage willing forth mood famous',
         category: 'flower',
@@ -80,7 +80,7 @@ export const PHOTOS = [
         id: 7,
         title: 'Daisy',
         photographer: 'Brandon Chambers',
-        photo: daisy,
+        img: daisy,
         description:
             'parallel rain busy desert learn cheese rice become drop he refer community hat wood noise sentence broad herself floor blind bill quickly purple old',
         category: 'flower',
@@ -89,7 +89,7 @@ export const PHOTOS = [
         id: 8,
         title: 'Orchid',
         photographer: 'Philip Jefferson',
-        photo: orchid,
+        img: orchid,
         description:
             'taste upon creature already mail fort outer highest noon steam tune join community fifteen settlers party widely talk volume sometime direction rabbit greatly occur',
         category: 'flower',
@@ -98,7 +98,7 @@ export const PHOTOS = [
         id: 9,
         title: 'Rose',
         photographer: 'Fannie Murphy',
-        photo: rose,
+        img: rose,
         description:
             'knife strong cutting age gentle prevent forget belt job halfway whistle tent bit strange hidden observe gone clean atomic social molecular comfortable water shape',
         category: 'flower',
@@ -107,7 +107,7 @@ export const PHOTOS = [
         id: 10,
         title: 'Sunflower',
         photographer: 'Laura Lambert',
-        photo: sunflower,
+        img: sunflower,
         description:
             'visitor mathematics cold accept molecular sitting flower answer send enemy brass fat sleep cave somewhere people coming form nose sail largest wooden girl throw',
         category: 'flower',
@@ -116,7 +116,7 @@ export const PHOTOS = [
         id: 11,
         title: 'Tulip',
         photographer: 'Adeline Wilkerson',
-        photo: tulip,
+        img: tulip,
         description:
             'pond war tent depth partly highest mouse action expect one atmosphere electricity correct path them corn gravity track deer stick swing inside father writing',
         category: 'flower',

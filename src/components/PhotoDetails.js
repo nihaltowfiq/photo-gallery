@@ -4,7 +4,8 @@ import { Button, Col, Container, Form, FormControl, InputGroup, Modal, Row } fro
 import LoadComments from './LoadComments';
 
 const PhotoDetails = (props) => {
-    const { title, photo, photographer, description, comments } = props;
+    const { photo, comments } = props;
+    const { title, img, photographer, description } = photo;
     const commentInput = useRef();
 
     const handleCommentSubmit = (e) => {
@@ -27,7 +28,7 @@ const PhotoDetails = (props) => {
                 <Container>
                     <Row>
                         <Col md={7}>
-                            <img className="img-fluid rounded" src={photo} alt={title} />
+                            <img className="img-fluid rounded" src={img} alt={title} />
                         </Col>
                         <Col md={5}>
                             <h5>

@@ -8,13 +8,15 @@ import Photo from './Photo';
 import PhotoDetails from './PhotoDetails';
 
 const Home = () => {
-    const [photos] = useState(PHOTOS);
+    const photosData = PHOTOS;
+    const [photos] = useState(photosData);
     const [comments] = useState(COMMENTS);
     const [selectedCategory, setSelectedCategory] = useState('flower');
     const [showModal, setShowModal] = useState(false);
     const [selectedPhoto, setSelectedPhoto] = useState(null);
 
     const selectedPhotos = photos.filter((photo) => photo.category === selectedCategory);
+    // console.log(selectedPhotos);
 
     let commentsOfSelectedPhoto = null;
     if (selectedPhoto) {
@@ -25,6 +27,7 @@ const Home = () => {
 
     const handleSelectedPhoto = (photo) => {
         setSelectedPhoto(photo);
+        // console.log(selectedPhoto);
     };
     return (
         <div>

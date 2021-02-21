@@ -8,6 +8,7 @@ const Photo = ({ photo, modalShow, handleSelectedPhoto }) => {
         modalShow();
         handleSelectedPhoto();
     };
+    // console.log(photo.photo);
 
     return (
         <Col md={4} className="p-2 align-content-center">
@@ -16,7 +17,7 @@ const Photo = ({ photo, modalShow, handleSelectedPhoto }) => {
                 onMouseEnter={() => setShowOption(true)}
                 onMouseLeave={() => setShowOption(false)}
             >
-                <Card.Img src={photo.photo} />
+                <Card.Img src={photo.img} />
                 {showOption && (
                     <Card.ImgOverlay className="text-center align-content-bottom bg_cloudy">
                         <Card.Title className="mt-5" as="h1">
