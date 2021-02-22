@@ -1,16 +1,14 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { useState } from 'react';
 import { Row } from 'react-bootstrap';
+import { connect } from 'react-redux';
 import { COMMENTS } from '../data/comments';
-import { PHOTOS } from '../data/photos';
 import './Home.css';
 import Photo from './Photo';
 import PhotoDetails from './PhotoDetails';
 
-const Home = () => {
-    const photosData = PHOTOS;
-    const [photos] = useState(photosData);
-    const [comments] = useState(COMMENTS);
+const Home = ({ photos }) => {
+    const [comments, setComments] = useState(COMMENTS);
     const [selectedCategory, setSelectedCategory] = useState('flower');
     const [showModal, setShowModal] = useState(false);
     const [selectedPhoto, setSelectedPhoto] = useState(null);
@@ -28,6 +26,10 @@ const Home = () => {
     const handleSelectedPhoto = (photo) => {
         setSelectedPhoto(photo);
         // console.log(selectedPhoto);
+    };
+
+    const addComment = (comment) => {
+        setComments([...comments, comment]);
     };
     return (
         <div>
@@ -67,10 +69,17 @@ const Home = () => {
                     onHide={() => setShowModal(false)}
                     photo={selectedPhoto}
                     comments={commentsOfSelectedPhoto}
+                    addComment={addComment}
                 />
             )}
         </div>
     );
 };
 
-export default Home;
+const mapStateToProps = (state) => {
+    return {
+        photos: state.photos,
+    };
+};
+
+export default connect(mapStateToProps)(Home);

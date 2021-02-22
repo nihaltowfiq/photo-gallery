@@ -4,13 +4,22 @@ import { Button, Col, Container, Form, FormControl, InputGroup, Modal, Row } fro
 import LoadComments from './LoadComments';
 
 const PhotoDetails = (props) => {
-    const { photo, comments } = props;
-    const { title, img, photographer, description } = photo;
+    const { photo, comments, addComment } = props;
+    const { title, img, photographer, description, id } = photo;
     const commentInput = useRef();
 
     const handleCommentSubmit = (e) => {
         console.log(commentInput.current.value);
         e.preventDefault();
+        const newComment = {
+            comment: commentInput.current.value,
+            author: 'Random Name',
+            id: Math.random() * 10000,
+            photoId: id,
+            date: new Date(),
+        };
+
+        addComment(newComment);
     };
     return (
         <Modal
