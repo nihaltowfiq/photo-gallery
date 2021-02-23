@@ -7,7 +7,7 @@ import './Home.css';
 import Photo from './Photo';
 import PhotoDetails from './PhotoDetails';
 
-const Home = ({ photos, user }) => {
+const Home = ({ photos }) => {
     const [comments, setComments] = useState(COMMENTS);
     const [selectedCategory, setSelectedCategory] = useState('flower');
     const [showModal, setShowModal] = useState(false);
@@ -33,8 +33,6 @@ const Home = ({ photos, user }) => {
     };
     return (
         <div>
-            <h1>{user.email}</h1>
-            <h1>{user.name}</h1>
             <nav className="mt-3 mb-1">
                 <ul className="nav justify-content-center">
                     <li
