@@ -1,9 +1,11 @@
+/* eslint-disable no-shadow */
 import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { logout } from '../redux/authActions';
 
-const Header = ({ user }) => {
+const Header = ({ user, logout }) => {
     let navbar = null;
     if (user.userId) {
         navbar = (
@@ -18,7 +20,7 @@ const Header = ({ user }) => {
                         <NavLink className="header_nav_link" exact to="/">
                             Home
                         </NavLink>
-                        <NavLink className="header_nav_link" to="/logout">
+                        <NavLink onClick={logout} className="header_nav_link" to="/logout">
                             Logout
                         </NavLink>
                     </Nav>
@@ -59,4 +61,6 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps)(Header);
+const mapDispatchToProps = { logout };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

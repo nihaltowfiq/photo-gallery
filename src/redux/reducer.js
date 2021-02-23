@@ -21,16 +21,18 @@ const photoReducer = (state = initialState, action) => {
 const authReducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.AUTH_SUCCESS:
-            // const newUser = {
-            //     email: action.payload.email,
-            //     userId: action.payload.userId,
-            //     name: null,
-            // };
             return {
                 ...state,
                 email: action.payload.email,
                 userId: action.payload.userId,
                 name: action.payload.name,
+            };
+        case actionTypes.LOG_OUT:
+            return {
+                ...state,
+                email: null,
+                userId: null,
+                name: null,
             };
         default:
             return state;

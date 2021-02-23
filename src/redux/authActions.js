@@ -43,3 +43,13 @@ export const auth = (email, password, name, toggleOption) => {
         }
     };
 };
+
+export const logout = () => {
+    firebaseAuth
+        .signOut()
+        .then((res) => {
+            console.log(res);
+        })
+        .catch((error) => console.log(error));
+    return { type: actionTypes.LOG_OUT };
+};
