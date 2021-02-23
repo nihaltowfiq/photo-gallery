@@ -1,6 +1,8 @@
+/* eslint-disable no-shadow */
 import React, { useRef, useState } from 'react';
 import { Button, Col, Form } from 'react-bootstrap';
-import { useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { auth } from '../../redux/authActions';
 
 const formStyle = {
     border: '1px solid gray',
@@ -8,25 +10,30 @@ const formStyle = {
     maxWidth: '600px',
 };
 
-const Login = () => {
+const Login = ({ auth }) => {
     const [validated, setValidated] = useState(false);
-    const history = useHistory();
+    const [toggleOption, setToggleOption] = useState(false);
+    // const history = useHistory();
 
-    const email = useRef();
-    const password = useRef();
+    const nameRef = useRef();
+    const emailRef = useRef();
+    const passwordRef = useRef();
 
     const handleSubmit = (event) => {
         const form = event.currentTarget;
+        const email = emailRef.current.value;
+        const password = passwordRef.current.value;
         event.preventDefault();
         if (form.checkValidity() === false) {
             event.stopPropagation();
         } else {
-            console.log(email.current.value, password.current.value);
-            password.current.value = '';
-            email.current.value = '';
+            console.log(email, password);
+            // password.current.value = '';
+            // email.current.value = '';
         }
 
         setValidated(true);
+        auth(email, password, toggleOption);
     };
     return (
         <div>
@@ -37,9 +44,20 @@ const Login = () => {
                 className="p-5 rounded mt-5"
                 style={formStyle}
             >
+                {toggleOption && (
+                    <Form.Group>
+                        <Form.Label>Your Name</Form.Label>
+                        <Form.Control required type="text" placeholder="Your Name" ref={nameRef} />
+                        <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                        <Form.Control.Feedback type="invalid">
+                            Please provide a Your name.
+                        </Form.Control.Feedback>
+                    </Form.Group>
+                )}
+
                 <Form.Group>
                     <Form.Label>Your Email</Form.Label>
-                    <Form.Control required type="email" placeholder="Your Email" ref={email} />
+                    <Form.Control required type="email" placeholder="Your Email" ref={emailRef} />
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                     <Form.Control.Feedback type="invalid">
                         Please provide a valid Email.
@@ -52,7 +70,7 @@ const Login = () => {
                         required
                         type="password"
                         placeholder="Your Password"
-                        ref={password}
+                        ref={passwordRef}
                     />
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                     <Form.Control.Feedback type="invalid">
@@ -63,17 +81,18 @@ const Login = () => {
                 <Form.Row>
                     <Form.Group as={Col} md="7" className="text-center ">
                         <Button
-                            onClick={() => history.push('/signup')}
+                            // onClick={() => history.push('/signup')}
+                            onClick={() => setToggleOption(!toggleOption)}
                             className="form-control btn_light"
                             variant="light"
                         >
-                            Create an Account!
+                            {toggleOption ? 'Create an Account!' : 'Already have an Account!'}
                         </Button>
                     </Form.Group>
 
                     <Form.Group as={Col} md="5" className="">
                         <Button type="submit" className="form-control" variant="success">
-                            Login
+                            {toggleOption ? 'Sign Up' : 'Login'}
                         </Button>
                     </Form.Group>
                 </Form.Row>
@@ -82,4 +101,6 @@ const Login = () => {
     );
 };
 
-export default Login;
+const mapDispatchToProps = { auth };
+
+export default connect(null, mapDispatchToProps)(Login);

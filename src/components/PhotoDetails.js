@@ -18,7 +18,6 @@ const PhotoDetails = (props) => {
             photoId: id,
             date: new Date(),
         };
-
         addComment(newComment);
     };
     return (

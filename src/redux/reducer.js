@@ -1,16 +1,45 @@
+/* eslint-disable no-case-declarations */
+import { combineReducers } from 'redux';
 import { PHOTOS } from '../data/photos';
+import * as actionTypes from './actionTypes';
 
-const initialPhotoState = {
-    isLoading: false,
-    photos: PHOTOS,
-    errMsg: null,
+const initialState = {
+    photoState: { isLoading: false, photos: PHOTOS, errMsg: null },
+    // userState: { email: null, name: null, userId: null },
+    email: null,
+    name: null,
+    userId: null,
 };
 
-const photoReducer = (state = initialPhotoState, action) => {
+const photoReducer = (state = initialState, action) => {
     switch (action.type) {
         default:
             return state;
     }
 };
 
-export default photoReducer;
+const authReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case actionTypes.AUTH_SUCCESS:
+            // const newUser = {
+            //     email: action.payload.email,
+            //     userId: action.payload.userId,
+            //     name: null,
+            // };
+            return {
+                ...state,
+                email: action.payload.email,
+                userId: action.payload.userId,
+                name: null,
+            };
+        default:
+            return state;
+    }
+};
+
+const Reducer = combineReducers({
+    photos: photoReducer,
+    user: authReducer,
+});
+
+export default Reducer;

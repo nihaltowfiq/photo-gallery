@@ -22,10 +22,10 @@ const SignUp = () => {
         if (form.checkValidity() === false) {
             event.stopPropagation();
         } else {
-            console.log(name.current.value, email.current.value, password.current.value);
-            name.current.value = '';
-            password.current.value = '';
-            email.current.value = '';
+            console.log(name.current.value, email.current.value, password.current.value.length);
+            // name.current.value = '';
+            // password.current.value = '';
+            // email.current.value = '';
         }
 
         setValidated(true);
@@ -67,7 +67,7 @@ const SignUp = () => {
                     />
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                     <Form.Control.Feedback type="invalid">
-                        Please provide a password.
+                        Please provide a password at least 6 character.
                     </Form.Control.Feedback>
                 </Form.Group>
 
