@@ -13,27 +13,31 @@ const formStyle = {
 const Login = ({ auth }) => {
     const [validated, setValidated] = useState(false);
     const [toggleOption, setToggleOption] = useState(false);
-    // const history = useHistory();
 
     const nameRef = useRef();
     const emailRef = useRef();
     const passwordRef = useRef();
 
     const handleSubmit = (event) => {
+        event.preventDefault();
         const form = event.currentTarget;
+
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-        event.preventDefault();
+
         if (form.checkValidity() === false) {
             event.stopPropagation();
         } else {
             console.log(email, password);
-            // password.current.value = '';
-            // email.current.value = '';
-        }
 
+            if (!toggleOption) {
+                auth(email, password, '', toggleOption);
+            } else {
+                const name = nameRef.current.value;
+                auth(email, password, name, toggleOption);
+            }
+        }
         setValidated(true);
-        auth(email, password, toggleOption);
     };
     return (
         <div>
@@ -81,7 +85,6 @@ const Login = ({ auth }) => {
                 <Form.Row>
                     <Form.Group as={Col} md="7" className="text-center ">
                         <Button
-                            // onClick={() => history.push('/signup')}
                             onClick={() => setToggleOption(!toggleOption)}
                             className="form-control btn_light"
                             variant="light"

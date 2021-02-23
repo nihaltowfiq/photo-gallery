@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
 import { Button, Card, Col } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
-const Photo = ({ photo, modalShow, handleSelectedPhoto }) => {
+const Photo = ({ photo, modalShow, handleSelectedPhoto, user }) => {
     const [showOption, setShowOption] = useState(false);
+    const history = useHistory();
 
     const viewDetailsEvent = () => {
-        modalShow();
-        handleSelectedPhoto();
+        if (user.email) {
+            modalShow();
+            handleSelectedPhoto();
+        } else {
+            history.push('/login');
+        }
     };
     // console.log(photo.photo);
 
@@ -37,4 +44,10 @@ const Photo = ({ photo, modalShow, handleSelectedPhoto }) => {
     );
 };
 
-export default Photo;
+const mapStateToProps = (state) => {
+    return {
+        user: state.user,
+    };
+};
+
+export default connect(mapStateToProps)(Photo);

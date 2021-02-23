@@ -4,19 +4,26 @@
 import * as actionTypes from './actionTypes';
 import { firebaseAuth } from './firebase';
 
-const authSuccess = (email, userId) => {
-    console.log('authSuccesss:', email, userId);
-    return { type: actionTypes.AUTH_SUCCESS, payload: { email, userId } };
+const authSuccess = (email, userId, name) => {
+    // console.log('authSuccesss:', email, userId, name);
+    return { type: actionTypes.AUTH_SUCCESS, payload: { email, userId, name } };
 };
 
-export const auth = (email, password, toggleOption) => {
+const updateProfile = (name) => {
+    firebaseAuth.currentUser.updateProfile({
+        displayName: name,
+    });
+};
+
+export const auth = (email, password, name, toggleOption) => {
     return (dispatch) => {
         if (toggleOption === true) {
             firebaseAuth
                 .createUserWithEmailAndPassword(email, password)
                 .then((userCredential) => {
                     const { email, uid } = userCredential.user;
-                    dispatch(authSuccess(email, uid));
+                    updateProfile(name);
+                    dispatch(authSuccess(email, uid, name));
                 })
                 .catch((error) => {
                     const errorCode = error.code;
@@ -26,9 +33,9 @@ export const auth = (email, password, toggleOption) => {
             firebaseAuth
                 .signInWithEmailAndPassword(email, password)
                 .then((userCredential) => {
-                    const { email, uid } = userCredential.user;
-                    console.log('AUTH:', email, uid);
-                    dispatch(authSuccess(email, uid));
+                    const { email, uid, displayName } = userCredential.user;
+                    // console.log('AUTH:', email, uid, displayName);
+                    dispatch(authSuccess(email, uid, displayName));
                 })
                 .catch((error) => {
                     console.log(error.message);

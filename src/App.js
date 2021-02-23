@@ -1,24 +1,40 @@
 import { Container } from 'react-bootstrap';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Login from './components/Auth/Login';
-import SignUp from './components/Auth/SignUp';
 import Header from './components/Header';
 import Home from './components/Home';
 
-function App() {
+function App({ user }) {
+    let routes = null;
+    if (user.userId === null) {
+        routes = (
+            <Switch>
+                <Route exact path="/login" component={Login} />
+                <Redirect to="/login" />
+            </Switch>
+        );
+    } else {
+        routes = (
+            <Switch>
+                <Route exact path="/" component={Home} />
+                <Redirect to="/" />
+            </Switch>
+        );
+    }
     return (
         <Router>
             <Header />
-            <Container>
-                <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route exact path="/login" component={Login} />
-                    <Route exact path="/signup" component={SignUp} />
-                </Switch>
-            </Container>
+            <Container>{routes}</Container>
         </Router>
     );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+    return {
+        user: state.user,
+    };
+};
+
+export default connect(mapStateToProps)(App);
