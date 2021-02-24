@@ -1,3 +1,5 @@
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable guard-for-in */
 /* eslint-disable no-case-declarations */
 import { combineReducers } from 'redux';
 import { PHOTOS } from '../data/photos';
@@ -39,9 +41,26 @@ const authReducer = (state = initialState, action) => {
     }
 };
 
+const commentReducer = (state = { comments: [] }, action) => {
+    switch (action.type) {
+        case actionTypes.LOAD_COMMENTS:
+            const newComments = [];
+            for (const key in action.payload) {
+                newComments.push({ ...action.payload[key], id: key });
+            }
+            console.log(newComments);
+            console.log(state);
+            return { ...state, comments: newComments };
+        default:
+            console.log(state);
+            return state;
+    }
+};
+
 const Reducer = combineReducers({
     photos: photoReducer,
     user: authReducer,
+    comments: commentReducer,
 });
 
 export default Reducer;

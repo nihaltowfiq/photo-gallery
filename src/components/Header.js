@@ -47,7 +47,6 @@ const Header = ({ user, logout }) => {
             </Container>
         );
     }
-    console.log(user);
     return (
         <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
             {navbar}
