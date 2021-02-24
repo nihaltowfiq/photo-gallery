@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import axios from 'axios';
-import { LOAD_COMMENTS } from './actionTypes';
+import { ADD_COMMENT, LOAD_COMMENTS } from './actionTypes';
 
 const loadComments = (comments) => {
     console.log(comments);
@@ -15,4 +15,9 @@ export const fetchComments = () => {
                 dispatch(loadComments(res.data));
             });
     };
+};
+
+export const addComment = (comment) => {
+    console.log(comment);
+    return { type: ADD_COMMENT, payload: comment };
 };

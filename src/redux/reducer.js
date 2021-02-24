@@ -42,14 +42,18 @@ const authReducer = (state = initialState, action) => {
 };
 
 const commentReducer = (state = { comments: [] }, action) => {
+    let newComments = [];
     switch (action.type) {
         case actionTypes.LOAD_COMMENTS:
-            const newComments = [];
             for (const key in action.payload) {
                 newComments.push({ ...action.payload[key], id: key });
             }
             console.log(newComments);
             console.log(state);
+            return { ...state, comments: newComments };
+        case actionTypes.ADD_COMMENT:
+            newComments = [...state.comments, action.payload];
+            console.log(newComments);
             return { ...state, comments: newComments };
         default:
             console.log(state);

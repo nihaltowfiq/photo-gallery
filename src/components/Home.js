@@ -8,13 +8,13 @@ import './Home.css';
 import Photo from './Photo';
 import PhotoDetails from './PhotoDetails';
 
-const Home = ({ photos, fetchComments, COMMENTS }) => {
-    const [comments, setComments] = useState(COMMENTS);
+const Home = ({ photos, comments, fetchComments }) => {
+    // const [comments] = useState(COMMENTS);
     const [selectedCategory, setSelectedCategory] = useState('flower');
     const [showModal, setShowModal] = useState(false);
     const [selectedPhoto, setSelectedPhoto] = useState(null);
 
-    useEffect(() => fetchComments(), [fetchComments, comments]);
+    useEffect(() => fetchComments(), [fetchComments]);
     console.log(comments);
 
     const selectedPhotos = photos.filter((photo) => photo.category === selectedCategory);
@@ -36,10 +36,10 @@ const Home = ({ photos, fetchComments, COMMENTS }) => {
         // console.log(selectedPhoto);
     };
 
-    const addcomment = (comment) => {
-        console.log(comment);
-        setComments({ comments: [...comments, comment] });
-    };
+    // const addcomment = (comment) => {
+    //     console.log(comment);
+    //     setComments({ comments: [...comments, comment] });
+    // };
     return (
         <div>
             <nav className="mt-3 mb-1">
@@ -78,7 +78,7 @@ const Home = ({ photos, fetchComments, COMMENTS }) => {
                     onHide={() => setShowModal(false)}
                     photo={selectedPhoto}
                     comments={commentsOfSelectedPhoto}
-                    addComment={addcomment}
+                    // addComment={addComment}
                 />
             )}
         </div>
@@ -89,7 +89,7 @@ const mapStateToProps = (state) => {
     return {
         photos: state.photos.photoState.photos,
         user: state.user,
-        COMMENTS: state.comments,
+        comments: state.comments,
     };
 };
 

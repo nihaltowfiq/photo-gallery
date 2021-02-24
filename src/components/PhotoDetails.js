@@ -1,14 +1,17 @@
+/* eslint-disable no-shadow */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-props-no-spreading */
 import axios from 'axios';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Button, Col, Container, Form, FormControl, InputGroup, Modal, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { addComment, fetchComments } from '../redux/commentActions';
 import LoadComments from './LoadComments';
 
 const PhotoDetails = (props) => {
-    const { photo, comments, addComment, user } = props;
+    const { photo, comments, addcomment, user, fetchcomments } = props;
     const { title, img, photographer, description, id } = photo;
+    useEffect(() => fetchcomments(), [fetchcomments]);
     const commentInput = useRef();
 
     const handleCommentSubmit = (e) => {
@@ -22,14 +25,13 @@ const PhotoDetails = (props) => {
             date: new Date(),
         };
 
-        axios
-            .post(
-                'https://database-for-projects-f2951-default-rtdb.firebaseio.com/comments.json',
-                newComment
-            )
-            .then((res) => console.log(res.data));
-        console.log(newComment);
-        addComment(newComment);
+        axios.post(
+            'https://database-for-projects-f2951-default-rtdb.firebaseio.com/comments.json',
+            newComment
+        );
+        // .then((res) => console.log(res.data));
+        // console.log(newComment);
+        addcomment(newComment);
     };
     return (
         <Modal
@@ -91,4 +93,6 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps)(PhotoDetails);
+const mapDispatchToProps = { fetchcomments: fetchComments, addcomment: addComment };
+
+export default connect(mapStateToProps, mapDispatchToProps)(PhotoDetails);

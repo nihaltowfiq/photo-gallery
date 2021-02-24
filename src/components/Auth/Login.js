@@ -39,6 +39,17 @@ const Login = ({ auth }) => {
         }
         setValidated(true);
     };
+
+    const handleToggleBtn = () => {
+        setToggleOption(!toggleOption);
+
+        if (toggleOption) {
+            nameRef.current.value = null;
+        }
+
+        emailRef.current.value = null;
+        passwordRef.current.value = null;
+    };
     return (
         <div>
             <Form
@@ -85,7 +96,7 @@ const Login = ({ auth }) => {
                 <Form.Row>
                     <Form.Group as={Col} md="7" className="text-center ">
                         <Button
-                            onClick={() => setToggleOption(!toggleOption)}
+                            onClick={handleToggleBtn}
                             className="form-control btn_light"
                             variant="light"
                         >
