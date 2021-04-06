@@ -9,6 +9,11 @@ const authSuccess = (email, userId, name) => {
     return { type: actionTypes.AUTH_SUCCESS, payload: { email, userId, name } };
 };
 
+const authFailed = (msg) => {
+    console.log(msg);
+    return { type: actionTypes.AUTH_FAILED, payload: msg };
+};
+
 const updateProfile = (name) => {
     firebaseAuth.currentUser.updateProfile({
         displayName: name,
@@ -26,8 +31,8 @@ export const auth = (email, password, name, toggleOption) => {
                     dispatch(authSuccess(email, uid, name));
                 })
                 .catch((error) => {
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
+                    const { message } = error;
+                    dispatch(authFailed(message));
                 });
         } else {
             firebaseAuth
@@ -38,7 +43,13 @@ export const auth = (email, password, name, toggleOption) => {
                     dispatch(authSuccess(email, uid, displayName));
                 })
                 .catch((error) => {
-                    console.log(error.message);
+                    const { code } = error;
+                    if (code === 'auth/user-not-found') {
+                        dispatch(authFailed('User not found, create an account!'));
+                    } else if (code === 'auth/wrong-password') {
+                        dispatch(authFailed('Wrong password, try again!'));
+                    }
+                    console.log(code);
                 });
         }
     };

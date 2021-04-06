@@ -11,6 +11,7 @@ const initialState = {
     email: null,
     name: null,
     userId: null,
+    authErrMsg: null,
 };
 
 const photoReducer = (state = initialState, action) => {
@@ -21,6 +22,7 @@ const photoReducer = (state = initialState, action) => {
 };
 
 const authReducer = (state = initialState, action) => {
+    console.log(state.authErrMsg);
     switch (action.type) {
         case actionTypes.AUTH_SUCCESS:
             return {
@@ -35,6 +37,12 @@ const authReducer = (state = initialState, action) => {
                 email: null,
                 userId: null,
                 name: null,
+            };
+        case actionTypes.AUTH_FAILED:
+            console.log('reducer:', action.payload);
+            return {
+                ...state,
+                authErrMsg: action.payload,
             };
         default:
             return state;

@@ -1,6 +1,6 @@
 /* eslint-disable no-shadow */
 import React, { useRef, useState } from 'react';
-import { Button, Col, Form } from 'react-bootstrap';
+import { Alert, Button, Col, Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { auth } from '../../redux/authActions';
 
@@ -10,9 +10,10 @@ const formStyle = {
     maxWidth: '600px',
 };
 
-const Login = ({ auth }) => {
+const Login = ({ auth, errMsg }) => {
     const [validated, setValidated] = useState(false);
     const [toggleOption, setToggleOption] = useState(false);
+    const [showMsg, setShowMsg] = useState(false);
 
     const nameRef = useRef();
     const emailRef = useRef();
@@ -37,6 +38,12 @@ const Login = ({ auth }) => {
                 auth(email, password, name, toggleOption);
             }
         }
+        if (errMsg !== null) {
+            setShowMsg(true);
+            setTimeout(() => {
+                setShowMsg(false);
+            }, 4000);
+        }
         setValidated(true);
     };
 
@@ -50,6 +57,7 @@ const Login = ({ auth }) => {
         emailRef.current.value = null;
         passwordRef.current.value = null;
     };
+
     return (
         <div>
             <Form
@@ -59,6 +67,11 @@ const Login = ({ auth }) => {
                 className="p-5 rounded mt-5"
                 style={formStyle}
             >
+                {showMsg && (
+                    <Alert transition variant="danger" className="text-center">
+                        {errMsg}
+                    </Alert>
+                )}
                 {toggleOption && (
                     <Form.Group>
                         <Form.Label>Your Name</Form.Label>
@@ -115,6 +128,13 @@ const Login = ({ auth }) => {
     );
 };
 
+const mapStateToProps = (state) => {
+    console.log(state);
+    return {
+        errMsg: state.user.authErrMsg,
+    };
+};
+
 const mapDispatchToProps = { auth };
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

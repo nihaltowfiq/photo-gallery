@@ -9,16 +9,13 @@ import Photo from './Photo';
 import PhotoDetails from './PhotoDetails';
 
 const Home = ({ photos, comments, fetchComments }) => {
-    // const [comments] = useState(COMMENTS);
     const [selectedCategory, setSelectedCategory] = useState('flower');
     const [showModal, setShowModal] = useState(false);
     const [selectedPhoto, setSelectedPhoto] = useState(null);
 
     useEffect(() => fetchComments(), [fetchComments]);
-    console.log(comments);
 
     const selectedPhotos = photos.filter((photo) => photo.category === selectedCategory);
-    // console.log(selectedPhotos);
 
     let commentsOfSelectedPhoto = null;
     if (selectedPhoto) {
@@ -26,20 +23,10 @@ const Home = ({ photos, comments, fetchComments }) => {
             (comment) => comment.photoId === selectedPhoto.id
         );
     }
-    // commentsOfSelectedPhoto = comments.filter((comment) => {
-    //     console.log(comment.photoId, selectedPhoto.id);
-    //     return comment.photoId === selectedPhoto.id;
-    // });
 
     const handleSelectedPhoto = (photo) => {
         setSelectedPhoto(photo);
-        // console.log(selectedPhoto);
     };
-
-    // const addcomment = (comment) => {
-    //     console.log(comment);
-    //     setComments({ comments: [...comments, comment] });
-    // };
     return (
         <div>
             <nav className="mt-3 mb-1">
@@ -78,7 +65,6 @@ const Home = ({ photos, comments, fetchComments }) => {
                     onHide={() => setShowModal(false)}
                     photo={selectedPhoto}
                     comments={commentsOfSelectedPhoto}
-                    // addComment={addComment}
                 />
             )}
         </div>

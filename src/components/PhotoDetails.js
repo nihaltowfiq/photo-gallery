@@ -9,11 +9,12 @@ import { addComment, fetchComments } from '../redux/commentActions';
 import LoadComments from './LoadComments';
 
 const PhotoDetails = (props) => {
-    const { photo, comments, addcomment, user, fetchcomments } = props;
+    const { show, onHide, photo, comments, addcomment, user, fetchcomments } = props;
     const { title, img, photographer, description, id } = photo;
-    useEffect(() => fetchcomments(), [fetchcomments]);
-    const commentInput = useRef();
 
+    useEffect(() => fetchcomments(), [fetchcomments]);
+
+    const commentInput = useRef();
     const handleCommentSubmit = (e) => {
         console.log(commentInput.current.value);
         e.preventDefault();
@@ -29,13 +30,12 @@ const PhotoDetails = (props) => {
             'https://database-for-projects-f2951-default-rtdb.firebaseio.com/comments.json',
             newComment
         );
-        // .then((res) => console.log(res.data));
-        // console.log(newComment);
         addcomment(newComment);
     };
     return (
         <Modal
-            {...props}
+            show={show}
+            onHide={onHide}
             aria-labelledby="contained-modal-title-vcenter"
             size="xl"
             centered
