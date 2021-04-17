@@ -1,5 +1,5 @@
 /* eslint-disable no-shadow */
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Alert, Button, Col, Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { auth } from '../../redux/authActions';
@@ -29,8 +29,9 @@ const Login = ({ auth, errMsg }) => {
         if (form.checkValidity() === false) {
             event.stopPropagation();
         } else {
-            console.log(email, password);
+            // console.log(email, password);
 
+            // eslint-disable-next-line no-lonely-if
             if (!toggleOption) {
                 auth(email, password, '', toggleOption);
             } else {
@@ -129,7 +130,6 @@ const Login = ({ auth, errMsg }) => {
 };
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
         errMsg: state.user.authErrMsg,
     };

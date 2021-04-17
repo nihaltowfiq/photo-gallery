@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Login from './components/Auth/Login';
+import Footer from './components/Footer';
 import Header from './components/Header';
 import Home from './components/Home';
 
@@ -27,6 +28,7 @@ function App({ user }) {
         <Router>
             <Header />
             <Container>{routes}</Container>
+            <Footer />
         </Router>
     );
 }

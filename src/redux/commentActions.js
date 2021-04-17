@@ -3,7 +3,6 @@ import axios from 'axios';
 import { ADD_COMMENT, LOAD_COMMENTS } from './actionTypes';
 
 const loadComments = (comments) => {
-    console.log(comments);
     return { type: LOAD_COMMENTS, payload: comments };
 };
 
@@ -18,6 +17,5 @@ export const fetchComments = () => {
 };
 
 export const addComment = (comment) => {
-    console.log(comment);
     return { type: ADD_COMMENT, payload: comment };
 };

@@ -16,7 +16,6 @@ const PhotoDetails = (props) => {
 
     const commentInput = useRef();
     const handleCommentSubmit = (e) => {
-        console.log(commentInput.current.value);
         e.preventDefault();
         const newComment = {
             comment: commentInput.current.value,

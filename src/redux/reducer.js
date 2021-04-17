@@ -22,7 +22,6 @@ const photoReducer = (state = initialState, action) => {
 };
 
 const authReducer = (state = initialState, action) => {
-    console.log(state.authErrMsg);
     switch (action.type) {
         case actionTypes.AUTH_SUCCESS:
             return {
@@ -39,7 +38,6 @@ const authReducer = (state = initialState, action) => {
                 name: null,
             };
         case actionTypes.AUTH_FAILED:
-            console.log('reducer:', action.payload);
             return {
                 ...state,
                 authErrMsg: action.payload,
@@ -56,15 +54,11 @@ const commentReducer = (state = { comments: [] }, action) => {
             for (const key in action.payload) {
                 newComments.push({ ...action.payload[key], id: key });
             }
-            console.log(newComments);
-            console.log(state);
             return { ...state, comments: newComments };
         case actionTypes.ADD_COMMENT:
             newComments = [...state.comments, action.payload];
-            console.log(newComments);
             return { ...state, comments: newComments };
         default:
-            console.log(state);
             return state;
     }
 };

@@ -5,12 +5,10 @@ import * as actionTypes from './actionTypes';
 import { firebaseAuth } from './firebase';
 
 const authSuccess = (email, userId, name) => {
-    // console.log('authSuccesss:', email, userId, name);
     return { type: actionTypes.AUTH_SUCCESS, payload: { email, userId, name } };
 };
 
 const authFailed = (msg) => {
-    console.log(msg);
     return { type: actionTypes.AUTH_FAILED, payload: msg };
 };
 
@@ -39,7 +37,6 @@ export const auth = (email, password, name, toggleOption) => {
                 .signInWithEmailAndPassword(email, password)
                 .then((userCredential) => {
                     const { email, uid, displayName } = userCredential.user;
-                    // console.log('AUTH:', email, uid, displayName);
                     dispatch(authSuccess(email, uid, displayName));
                 })
                 .catch((error) => {
@@ -49,7 +46,6 @@ export const auth = (email, password, name, toggleOption) => {
                     } else if (code === 'auth/wrong-password') {
                         dispatch(authFailed('Wrong password, try again!'));
                     }
-                    console.log(code);
                 });
         }
     };

@@ -1,6 +1,6 @@
 /* eslint-disable no-shadow */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { fetchComments } from '../redux/commentActions';
