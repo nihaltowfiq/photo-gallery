@@ -1,4 +1,10 @@
 /* eslint-disable import/prefer-default-export */
+import cockatoo from '../assets/birds/cockatoo.jpg';
+import dove from '../assets/birds/dove.jpg';
+import eagle from '../assets/birds/eagle.jpg';
+import macaw from '../assets/birds/macaw.jpg';
+import magpieRobins from '../assets/birds/magpie-robins.jpg';
+import owl from '../assets/birds/owl.jpg';
 import daffodil from '../assets/flowers/daffodil.jfif';
 import daisy from '../assets/flowers/daisy.jfif';
 import orchid from '../assets/flowers/orchid.jfif';
@@ -120,5 +126,59 @@ export const PHOTOS = [
         description:
             'pond war tent depth partly highest mouse action expect one atmosphere electricity correct path them corn gravity track deer stick swing inside father writing',
         category: 'flower',
+    },
+    {
+        id: 12,
+        title: 'Cockatoo',
+        photographer: 'Adeline Wilkerson',
+        img: cockatoo,
+        description:
+            'pond war tent depth partly highest mouse action expect one atmosphere electricity correct path them corn gravity track deer stick swing inside father writing',
+        category: 'bird',
+    },
+    {
+        id: 13,
+        title: 'Dove',
+        photographer: 'Adeline Wilkerson',
+        img: dove,
+        description:
+            'pond war tent depth partly highest mouse action expect one atmosphere electricity correct path them corn gravity track deer stick swing inside father writing',
+        category: 'bird',
+    },
+    {
+        id: 14,
+        title: 'Magpie Robbins',
+        photographer: 'Adeline Wilkerson',
+        img: magpieRobins,
+        description:
+            'pond war tent depth partly highest mouse action expect one atmosphere electricity correct path them corn gravity track deer stick swing inside father writing',
+        category: 'bird',
+    },
+    {
+        id: 15,
+        title: 'Eagle',
+        photographer: 'Adeline Wilkerson',
+        img: eagle,
+        description:
+            'pond war tent depth partly highest mouse action expect one atmosphere electricity correct path them corn gravity track deer stick swing inside father writing',
+        category: 'bird',
+    },
+    {
+        id: 16,
+        title: 'Macaw',
+        photographer: 'Adeline Wilkerson',
+        img: macaw,
+        description:
+            'pond war tent depth partly highest mouse action expect one atmosphere electricity correct path them corn gravity track deer stick swing inside father writing',
+        category: 'bird',
+    },
+    {
+        id: 17,
+        title: 'Owl',
+        photographer: 'Adeline Wilkerson',
+        img: owl,
+        description:
+            'pond war tent depth partly highest mouse action expect one atmosphere electricity correct path them corn gravity track deer stick swing inside father writing',
+        category: 'bird',
     },
 ];

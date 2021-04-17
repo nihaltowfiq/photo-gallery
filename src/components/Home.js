@@ -47,6 +47,14 @@ const Home = ({ photos, comments, fetchComments }) => {
                     >
                         Fruit
                     </li>
+                    <li
+                        onClick={() => setSelectedCategory('bird')}
+                        className={
+                            selectedCategory === 'bird' ? 'active nav-link mx-1' : 'nav-link mx-1'
+                        }
+                    >
+                        Bird
+                    </li>
                 </ul>
             </nav>
             <Row>
